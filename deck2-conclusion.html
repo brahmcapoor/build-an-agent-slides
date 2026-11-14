@@ -176,7 +176,7 @@ svg text { font-family: var(--sans); }
 </style>
 </head>
 <body>
-<div class="help">→ next · ← back · N notes · F fullscreen</div>
+<div class="help">→ next · ← back · F fullscreen</div>
 <div class="deck">
   <div class="bar"></div>
   <div class="footer">
@@ -190,7 +190,6 @@ svg text { font-family: var(--sans); }
     <h1 style="font-size:116px;max-width:1040px">You built an <b class="u">agent</b></h1>
     <p class="lead" style="margin-top:56px;max-width:960px">One loop.<br>A prompt and a dictionary of tools.</p>
     <img class="art" data-art="robot" alt="A friendly robot and a person doing yoga side by side" style="right:140px;top:270px;width:560px">
-    <aside class="notes">Congratulations: you built an agent. It's a loop, a prompt, and a dictionary of tools, and you wrote all of it yourself. In this video we'll look at how real agents compare to yours, and at a kind of agent you can use to write code. Then some advice for using these tools well, and ideas for what to build next with agents.</aside>
   </section>
 
   <!-- 2. What's different in real agents -->
@@ -215,7 +214,6 @@ svg text { font-family: var(--sans); }
         </div>
       </div>
     </div>
-    <aside class="notes">The agent you built has the same shape as the agents companies ship. The differences are mostly polish. In yours, you write the list of tools into your prompt, and you pull the tool name out of the model's reply text yourself. With a real AI service, you hand over the tool list separately, and the service gives you the tool name and its values already separated, so there's less text-reading to get wrong. And real agents often have dozens of tools instead of a few. But the loop underneath is the one you built.</aside>
   </section>
 
   <!-- 3. A coding agent is the same loop (walkthrough: 3 steps) -->
@@ -247,7 +245,6 @@ svg text { font-family: var(--sans); }
       <p class="step swap" data-step="2" data-out="3" style="position:absolute;left:0;top:405px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">A coding agent: tools for reading, changing and running your code.</p>
       <p class="step" data-step="3" style="position:absolute;left:0;top:405px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">The loop is the same.</p>
     </div>
-    <aside class="notes">Here's the connection I want you to take away. Step one is the agent you built: the same loop, with tools for a to-do list. Step two, swap the tools. A coding agent is an agent whose tools let it read, change and run your code: read a file, edit a file, run a command. Step three: the loop hasn't changed. The model asks for a tool, the program runs it, and the result goes back to the model. If you understand the agent you built, you understand how a coding agent works.</aside>
   </section>
 
   <!-- 4. Coding agents exist (Claude Code is the demo; others work similarly; mostly paid, some free tiers; optional) -->
@@ -270,7 +267,6 @@ svg text { font-family: var(--sans); }
       <div class="card steel" style="padding:32px 40px"><p style="color:var(--ink);font-size:38px">A lot of professional programming is done with them today.</p></div>
       <div class="card" style="padding:32px 40px"><p style="color:var(--ink);font-size:38px"><b>Most cost money, some have free plans. You don't need one.</b></p></div>
     </div>
-    <aside class="notes">Coding agents like this are everywhere now. I'll demo Claude Code, but it isn't the only one. Others work broadly similarly: Codex from OpenAI, Cursor, GitHub Copilot, and more come out all the time. I'm not recommending one over another. I want to be upfront about two things. First, this is how a lot of professional programming is done today, so it's worth knowing what it is. Second, professional tools generally cost money, which is the only reason these do. Some have limited free plans, GitHub Copilot is free for verified students, and there are open-source ones like Aider where you bring your own model, though you pay for the model unless you run one on your own computer. Plans and prices change often, so check each tool's own page if you're curious. You don't need any of them for this assignment, and you can write great programs without one. Think of it as something you can reach for if you want to, not something you're expected to use.</aside>
   </section>
 
   <!-- 5. Demo signpost -->
@@ -278,7 +274,6 @@ svg text { font-family: var(--sans); }
     <div class="kicker">Up next</div>
     <h1 style="font-size:150px">Live <b class="u">demo</b></h1>
     <p class="lead" style="margin-top:56px">Claude Code, working on a project.</p>
-    <aside class="notes">Now for a demo. I'll use Claude Code and do this live, so you can see what it actually looks like when a coding agent works on a project: asking for a change, watching it read the code and make edits, and running the result.</aside>
   </section>
 
   <!-- 6. Using it well -->
@@ -292,7 +287,6 @@ svg text { font-family: var(--sans); }
       <div class="card"><h3>Know why it works</h3><p>If you can't explain it, you can't fix it.</p></div>
     </div>
     <p style="margin-top:36px;font-family:var(--serif);font-size:42px">Try it yourself first, so you're learning, not just copying.</p>
-    <aside class="notes">If you do use a coding agent, a few habits matter. Read what it writes. You can now, because you know how code like this works, and reading is how you catch mistakes. Run it and test it, because it can be confidently wrong. Ask for small changes rather than huge ones, so each step is easy to check. And make sure you know why the code works. If you can't explain it, you can't fix it when it breaks. One more habit while you're still learning: try it yourself first, so you're learning, not just copying.</aside>
   </section>
 
   <!-- 7. Safety -->
@@ -305,7 +299,6 @@ svg text { font-family: var(--sans); }
       <div class="card danger"><h3>Keep tools small</h3><p>No tools that run any code or delete files.</p></div>
       <div class="card danger"><h3>Save a copy first</h3><p>Back up your project so a bad change is easy to undo.</p></div>
     </div>
-    <aside class="notes">This is the longer version of the safety point from the first video. A coding agent can change your files and run commands, so you're giving it real power. A coding agent usually asks before it changes files or runs commands. Read what it wants to do before you say yes. Never paste your API key or your passwords into a chat with an AI. When you build agents of your own, don't give them tools that run arbitrary code or delete files, especially with smaller, cheaper models. And keep a backup of your project, or use version control, so a bad change is easy to undo.</aside>
   </section>
 
   <!-- 8. What your agent is built on -->
@@ -318,7 +311,6 @@ svg text { font-family: var(--sans); }
       <div class="card amber" style="padding:22px 36px"><p style="color:var(--ink);font-size:38px">The Code in Place server and the model: other programs on the internet</p></div>
       <div class="card" style="padding:22px 36px"><p style="color:var(--ink);font-size:38px">Python</p></div>
     </div>
-    <aside class="notes">Your agent isn't only your code. It sits on top of other people's work: the notopenai library, which someone else wrote so you didn't have to; the Code in Place server and the model, which are other programs on the internet that your program talks to; and Python itself. Building on work that already exists is a normal part of making things, and you've been doing it all along.</aside>
   </section>
 
   <!-- 9. What to build next -->
@@ -350,7 +342,6 @@ svg text { font-family: var(--sans); }
       </div>
     </div>
     <p style="margin-top:44px;font-family:var(--serif);font-size:44px">Decide what it needs to keep track of. Write a tool for each thing it can do.</p>
-    <aside class="notes">Where to go from here. The best next step is to build an agent of your own. Pick something you care about. A text adventure could have tools to look around, move, and pick things up. A study buddy could save flashcards and quiz you. A tracker could log anything you like, such as workouts or books, and summarise it. These are just examples; I made them up. The recipe is the one you already followed: decide what your agent needs to keep track of, then write one tool for each thing it can do. And remember the safety point: keep the tools small and boring.</aside>
   </section>
 
   <!-- 10. Recap -->
@@ -363,7 +354,6 @@ svg text { font-family: var(--sans); }
       <div class="card navy"><h3>A tool is a function</h3><p>The model can ask for it. Your program runs it.</p></div>
       <div class="card danger"><h3>Keep tools small</h3><p>The model can make mistakes.</p></div>
     </div>
-    <aside class="notes">Here's what you've learned about agents. The model only sends text, so it can't see your program. It asks for things, and your program reads the ask and runs a function. A tool is just a function the model can ask for. And because the model can make mistakes, keep your tools small and safe. That's an agent: a loop, a prompt, and a dictionary of tools. Nice work.</aside>
   </section>
 </div>
 <script>
@@ -379,9 +369,7 @@ document.querySelectorAll("[data-art]").forEach(function (i) { i.src = ART; });
   var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
   var bar = document.querySelector('.bar');
   var counter = document.querySelector('.counter');
-  var panel = document.createElement('div');
-  panel.className = 'notes-panel';
-  document.body.appendChild(panel);
+  var panel = { innerHTML: '' };
 
   var cur = 0, step = 0;
 
@@ -480,7 +468,6 @@ document.querySelectorAll("[data-art]").forEach(function (i) { i.src = ART; });
     else if (k === 'ArrowLeft' || k === 'PageUp' || k === 'Backspace') { e.preventDefault(); prev(); }
     else if (k === 'Home') { cur = 0; step = 0; apply(); }
     else if (k === 'End') { cur = slides.length - 1; step = maxStep(slides[cur]); apply(); }
-    else if (k === 'n' || k === 'N') { panel.classList.toggle('on'); }
     else if (k === 'f' || k === 'F') {
       if (document.fullscreenElement) document.exitFullscreen();
       else if (document.documentElement.requestFullscreen) { try { document.documentElement.requestFullscreen().catch(function () {}); } catch (e) {} }

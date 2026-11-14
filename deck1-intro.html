@@ -176,7 +176,7 @@ svg text { font-family: var(--sans); }
 </style>
 </head>
 <body>
-<div class="help">→ next · ← back · N notes · F fullscreen</div>
+<div class="help">→ next · ← back · F fullscreen</div>
 <div class="deck">
   <div class="bar"></div>
   <div class="footer">
@@ -190,7 +190,6 @@ svg text { font-family: var(--sans); }
     <h1 style="font-size:150px">Build an <b class="u">Agent</b></h1>
     <p class="lead" style="margin-top:56px">Your chatbot can talk. Now it can <em class="hl">act</em>.</p>
     <img class="art" data-art="robot" alt="A friendly robot and a person doing yoga side by side" style="right:140px;top:250px;width:640px">
-    <aside class="notes">Welcome. You've built a chatbot that remembers and has a personality. In this assignment it gets hands: it can change things in your program. This video sets up the idea and the plan. The assignment itself is eight short milestones.</aside>
   </section>
 
   <!-- 2. Where you left off -->
@@ -228,7 +227,6 @@ Assistant:</div>
     </div>
     <p style="margin-top:50px"><em class="hl">Your finished chatbot is your starter code.</em></p>
     <p class="small" style="margin-top:12px">Not finished? Do <i>Give It a Memory</i> and <i>Give It a Personality</i> first.</p>
-    <aside class="notes">This assignment starts exactly where the Week 6 Chatbot assignment ended. Your finished chatbot is the starter code: in milestone 1 you'll copy it out of the Code in Place editor onto your own computer. Here's how the pieces fit. Your messages list holds every message so far, and the first one is your system message, the hidden instructions that give your bot its personality. format_messages turns that whole list into one string of text. call_gpt sends that string to the model and brings back its reply. In milestone 1 you'll write call_gpt yourself; everything else carries over. If you haven't finished the chatbot, you need at least the memory and personality milestones, so get those working first.</aside>
   </section>
 
   <!-- 3. The catch (walkthrough: 4 steps) -->
@@ -259,7 +257,6 @@ Assistant:</div>
         <div class="code" style="margin-top:22px;font-size:40px;padding:30px 34px">todos = []</div>
       </div>
     </div>
-    <aside class="notes">The big idea up front: the model only knows what you send it. We'll be building an agent that manages a to-do list. Step through it. 1) You ask the chatbot: add milk to my to-do list. 2) Your program sends that message, as text, to the model. 3) The model replies, also as text. Honestly, it says "Sorry, I don't know about your todos." 4) It can't see your todos list at all. That variable lives inside your program, and the model runs on a computer far away that has never seen your code. Everything in this assignment is about closing that gap.</aside>
   </section>
 
   <!-- 4. So let it ask (bridge) -->
@@ -283,7 +280,6 @@ Assistant:</div>
         <div class="code" style="margin-top:22px;font-size:38px;padding:30px 34px">todos = ["milk"]</div>
       </div>
     </div>
-    <aside class="notes">Here's how we close the gap. We can't make the model touch your variables, but we can teach it to ask. First, you tell it how to ask: in its hidden instructions, the system message, you write something like "to add a task, reply ADD: and the task". The model follows that, so instead of saying it doesn't know about your todos, it replies with a command in the format you chose: ADD: milk. That's still only text. But your program can read that text, and run code that actually changes the list. The model asks, your program does.</aside>
   </section>
 
 <section class="slide">
@@ -320,7 +316,6 @@ Assistant:</div>
     <p class="step swap" data-step="7" data-out="8" style="position:absolute;left:0;top:405px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px;line-height:1.3">The model replies.</p>
     <p class="step swap" data-step="8" data-out="9" style="position:absolute;left:0;top:405px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px;line-height:1.3">The program shows you.</p>
     </div>
-    <aside class="notes">Walk through it, one press per step. You type "add milk". Your program sends the conversation to the model, with instructions about how to ask for tools. The model replies with a command, ADD: milk. Remember, that's only text. The model can't change anything. But your program has logic of its own: an if statement that checks whether the reply starts with ADD:, which is the format you told the model to use in its instructions. That's step four, the program reading the command. Because it matches, step five, the program runs the add_todo function, and your todos list actually changes. The program then tells the model what happened, the model writes a normal reply, and your program prints it. This round trip is the loop you'll build, and it gets more capable with each milestone.</aside>
   </section>
 
   <!-- 6. Two words -->
@@ -331,7 +326,6 @@ Assistant:</div>
       <div class="card navy" style="padding:50px 54px;min-height:340px"><h3 style="font-size:96px;margin-bottom:26px">tool</h3><p style="font-size:38px">A function the model can ask for.</p><span class="chip navy" style="margin-top:22px">add_todo</span></div>
       <div class="card amber" style="padding:50px 54px;min-height:340px"><h3 style="font-size:96px;margin-bottom:26px">agent</h3><p style="font-size:38px">A program that runs tools for a model.</p></div>
     </div>
-    <aside class="notes">Two words you'll hear a lot. A tool is a function in your program that the model can ask for, like the add_todo function you just watched change the list. An agent is a program that gives a model tools and runs them for it, which is what you're about to build. The model never runs a tool itself; it asks, and your program does the work.</aside>
   </section>
 
   <!-- 7. Milestones -->
@@ -348,7 +342,6 @@ Assistant:</div>
       <div style="display:flex;gap:28px;align-items:center"><span class="num">7</span><div><b style="font-family:var(--serif);font-size:48px;font-weight:600">Keep It Safe</b><div class="muted" style="font-size:32px;margin-top:2px">Handle mistakes</div></div></div>
       <div style="display:flex;gap:28px;align-items:center"><span class="num amber">8</span><div><b style="font-family:var(--serif);font-size:48px;font-weight:600">Swap the Tools</b><div class="muted" style="font-size:32px;margin-top:2px">Build a second agent</div></div></div>
     </div>
-    <aside class="notes">Eight milestones, and each one ends with your bot able to do something new. Run your program after every one. Milestone 1 is setup: you write call_gpt yourself, talking to the model with your own key. Two adds a task to the list, three reads it back, four crosses tasks off, working out the steps itself. Five and six make the way it asks sturdier: dictionaries, then more information per task. Seven adds safety nets, and eight turns it into a loop that runs any agent, including a second one you design.</aside>
   </section>
 
   <!-- 8. Rough first, then sturdy: what the model returns (walkthrough: 3 steps) -->
@@ -393,7 +386,6 @@ Assistant:</div>
       <p class="step swap" data-step="2" data-out="3" style="position:absolute;left:0;top:550px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">Text that looks like a dictionary: ask for a value by its name.</p>
       <p class="step swap" data-step="3" data-out="4" style="position:absolute;left:0;top:550px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">Room for a task and its priority.</p>
     </div>
-    <aside class="notes">This slide is about what the model sends back, and how that reply gets sturdier. Step one: we start with a deliberately simple text command, ADD: buy milk, so you get something working fast. But it's fragile. If the model says "Sure! ADD: buy milk", your code doesn't recognise it, because it only checks the start of the reply, and it breaks. Step two, milestone 5: the model replies with something that looks like a dictionary, so your code can read values by name rather than counting characters. One important detail: it's still only text. The model can't hand your program a real Python dictionary, only text that looks like one. Step three, milestone 6: the dictionary can hold several values at once, like a task and its priority. You'll hit each problem before you get the fix, so you'll feel why it's better. Later, in milestone 8, you'll also restructure your own code around a dictionary of tools, but the model's reply stays in this last format.</aside>
   </section>
 
   <!-- 9. Setup -->
@@ -407,7 +399,6 @@ Assistant:</div>
       <div style="display:flex;gap:30px;align-items:center"><span class="num amber">4</span><p>Write <code class="i">call_gpt</code>, bring in your <b>chatbot</b></p></div>
     </div>
     <p class="small" style="margin-top:40px">This time you work on your own computer, not in the Code in Place editor.</p>
-    <aside class="notes">This assignment leaves the Code in Place editor and runs on your own machine. That's a bit more setup, but it's the setup real programmers use, and it's the first step to building things beyond this course. The setup guide covers Windows and Mac and walks you through installing Python and VS Code. Then you download the starter code, get your key from the Code in Place website, and in milestone 1 you write call_gpt and bring in your finished chatbot. If something goes wrong, the forum is the place to ask.</aside>
   </section>
 
   <!-- 10. What an API key is (walkthrough: 3 steps) -->
@@ -428,7 +419,6 @@ Assistant:</div>
       <p class="step swap" data-step="3" data-out="4" style="position:absolute;left:0;top:400px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px;line-height:1.3">Then it passes the message on to the model.</p>
       <p class="small" style="position:absolute;left:0;top:490px;width:1640px;text-align:center;font-size:34px">An API key is a password your program shows to an AI service.</p>
     </div>
-    <aside class="notes">Here's what an API key is for. An API is just a way for one program to ask another program for something, and the key is the password that goes with it. Real AI services charge by use, so a program has to tell the service who it is. Your key does that: your program sends it along with every request. Step one: your program sends the request with your key. Step two: the Code in Place server checks who you are and counts how much you've used. Step three: it passes the request on to the model, and the reply comes back the same way. This one is a free key, made for the course. It starts with noai-, and it isn't an OpenAI key, so it only works with the notopenai library.</aside>
   </section>
 
   <!-- 11. Get your key -->
@@ -447,7 +437,6 @@ from notopenai import NotOpenAI
 
 API_KEY = <span style="background:rgba(224,135,42,.55);border-radius:6px;padding:0 6px;margin:0 -6px">"noai-..."</span></div>
     </div>
-    <aside class="notes">Getting your key takes a minute. Sign in to Code in Place with your course account. Open your key page, the address is on screen, and click Show to reveal the key, then copy it. It starts with noai-. Then open ai.py in the starter code. It already has the import and a line for your key; paste yours between the quotes, in place of noai-dot-dot-dot. Keep it in ai.py only, so you can share your main program for help without sharing your key. If the page says you don't have a key yet, check you're signed in with the same account you use for the course, and ask on the forum.</aside>
   </section>
 
   <!-- 12. Limits and care -->
@@ -467,7 +456,6 @@ API_KEY = <span style="background:rgba(224,135,42,.55);border-radius:6px;padding
         <p style="font-size:30px;margin-top:14px">Take it out before you share code.</p>
       </div>
     </div>
-    <aside class="notes">Your key comes with limits, so a bug in your program can't use up everything at once. There's a token budget for the whole assignment, about two million tokens, where a token is roughly three-quarters of a word. A long conversation with your finished agent uses about twenty thousand, so there's plenty. There's also a limit on requests per minute and per day. The handout shows you how to check how much you've used. And treat your key like a password: don't post it, and take it out of any code before you share it on the forum. If something goes wrong with your key, ask on the forum.</aside>
   </section>
 
   <!-- 11. Tips -->
@@ -482,7 +470,6 @@ API_KEY = <span style="background:rgba(224,135,42,.55);border-radius:6px;padding
       </div>
       <div class="card" style="min-height:300px"><h3>Tell the model exactly how to reply</h3></div>
     </div>
-    <aside class="notes">Three habits. Run after every milestone, in small steps, so if it breaks you know which one did. Don't expect identical output twice: the model words things differently each time, so test for behavior, not exact text. And tell the model exactly how to reply: your code only recognises one exact format, so your instructions have to spell it out clearly.</aside>
   </section>
 
   <!-- 12. Safety -->
@@ -497,7 +484,6 @@ API_KEY = <span style="background:rgba(224,135,42,.55);border-radius:6px;padding
     <div class="card navy" style="max-width:1300px">
       <p style="color:var(--ink)"><b>Keep tools small and boring.</b> The model can make mistakes.</p>
     </div>
-    <aside class="notes">One important point before you start. When you give the model a tool, you're giving it the power to cause that action. The model decides when to use it, and models make mistakes, especially smaller, cheaper ones. So never give it a tool that runs arbitrary code, like eval or os.system, or one that deletes files. Good tools are small and boring: add a task, list tasks, cross one off. If the worst it can do is mess up a list, you're fine. In milestone 8 you'll design your own agent, so keep this in mind then. I'll come back to this in the next video.</aside>
   </section>
 
   <!-- 13. Go -->
@@ -505,7 +491,6 @@ API_KEY = <span style="background:rgba(224,135,42,.55);border-radius:6px;padding
     <div class="kicker">Ready?</div>
     <h1 style="font-size:106px;max-width:1300px">Start with <b>milestone 1</b></h1>
     <img class="art" data-art="robot" alt="A friendly robot and a person doing yoga side by side" style="right:140px;top:270px;width:560px">
-    <aside class="notes">That's the overview. Follow the setup guide, get your key, and start with milestone 1: set up, write call_gpt, and bring in your chatbot. I'll see you in the next video, once you've built your agent.</aside>
   </section>
 </div>
 <script>
@@ -521,9 +506,7 @@ document.querySelectorAll("[data-art]").forEach(function (i) { i.src = ART; });
   var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
   var bar = document.querySelector('.bar');
   var counter = document.querySelector('.counter');
-  var panel = document.createElement('div');
-  panel.className = 'notes-panel';
-  document.body.appendChild(panel);
+  var panel = { innerHTML: '' };
 
   var cur = 0, step = 0;
 
@@ -622,7 +605,6 @@ document.querySelectorAll("[data-art]").forEach(function (i) { i.src = ART; });
     else if (k === 'ArrowLeft' || k === 'PageUp' || k === 'Backspace') { e.preventDefault(); prev(); }
     else if (k === 'Home') { cur = 0; step = 0; apply(); }
     else if (k === 'End') { cur = slides.length - 1; step = maxStep(slides[cur]); apply(); }
-    else if (k === 'n' || k === 'N') { panel.classList.toggle('on'); }
     else if (k === 'f' || k === 'F') {
       if (document.fullscreenElement) document.exitFullscreen();
       else if (document.documentElement.requestFullscreen) { try { document.documentElement.requestFullscreen().catch(function () {}); } catch (e) {} }

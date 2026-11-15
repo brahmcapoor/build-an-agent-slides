@@ -166,6 +166,10 @@ svg text { font-family: var(--sans); }
 /* notes overlay (press N) */
 .notes-panel { position: fixed; left: 0; right: 0; bottom: 0; max-height: 34vh; overflow: auto; background: rgba(20,20,24,.95); color: #f4f1ea; padding: 18px 36px 24px; font-size: 20px; line-height: 1.5; z-index: 99; display: none; }
 .notes-panel.on { display: block; }
+.fs-btn { position: fixed; right: 14px; top: 34px; font: 13px var(--sans); color: #6b6b68; background: rgba(255,255,255,.9); border: 1px solid #d7d2c6; border-radius: 999px; padding: 5px 13px; cursor: pointer; z-index: 98; }
+.fs-btn:hover { color: var(--ink); border-color: #9a968c; }
+html.is-fs .fs-btn, html.is-fs .help { display: none; }
+html.is-fs.idle, html.is-fs.idle * { cursor: none !important; }
 .help { position: fixed; right: 14px; top: 10px; font: 13px var(--sans); color: #9a968c; z-index: 98; animation: helpfade 1s ease 5s forwards; }
 @keyframes helpfade { to { opacity: 0; } }
 
@@ -594,6 +598,43 @@ document.querySelectorAll("[data-art]").forEach(function (i) { i.src = ART; });
     apply();
   }
 
+  // Real browser fullscreen: hides the address bar and everything else.
+  function isFullscreen() { return !!(document.fullscreenElement || document.webkitFullscreenElement); }
+  function toggleFullscreen() {
+    var el = document.documentElement;
+    try {
+      if (isFullscreen()) {
+        (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      } else {
+        var req = el.requestFullscreen || el.webkitRequestFullscreen;
+        if (req) { var p = req.call(el); if (p && p.catch) p.catch(function () {}); }
+      }
+    } catch (e) { /* not allowed here (for example inside a sandboxed frame) */ }
+  }
+  var idleTimer = null;
+  function onFullscreenChange() {
+    var on = isFullscreen();
+    document.documentElement.classList.toggle('is-fs', on);
+    document.documentElement.classList.remove('idle');
+    fit();
+  }
+  document.addEventListener('fullscreenchange', onFullscreenChange);
+  document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+  // In fullscreen, hide the mouse pointer after a moment of no movement.
+  document.addEventListener('mousemove', function () {
+    if (!isFullscreen()) return;
+    document.documentElement.classList.remove('idle');
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(function () { document.documentElement.classList.add('idle'); }, 1800);
+  });
+  // A visible way in, for people who don't know the F key.
+  var fsButton = document.createElement('button');
+  fsButton.type = 'button';
+  fsButton.className = 'fs-btn';
+  fsButton.textContent = 'Full screen';
+  fsButton.addEventListener('click', toggleFullscreen);
+  document.body.appendChild(fsButton);
+
   function fit() {
     var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
     deck.style.transform = 'translate(-50%, -50%) scale(' + s + ')';
@@ -605,10 +646,7 @@ document.querySelectorAll("[data-art]").forEach(function (i) { i.src = ART; });
     else if (k === 'ArrowLeft' || k === 'PageUp' || k === 'Backspace') { e.preventDefault(); prev(); }
     else if (k === 'Home') { cur = 0; step = 0; apply(); }
     else if (k === 'End') { cur = slides.length - 1; step = maxStep(slides[cur]); apply(); }
-    else if (k === 'f' || k === 'F') {
-      if (document.fullscreenElement) document.exitFullscreen();
-      else if (document.documentElement.requestFullscreen) { try { document.documentElement.requestFullscreen().catch(function () {}); } catch (e) {} }
-    }
+    else if (k === 'f' || k === 'F') { toggleFullscreen(); }
   });
   document.addEventListener('click', function (e) {
     if (e.target.closest('a, button')) return;

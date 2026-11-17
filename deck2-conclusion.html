@@ -230,48 +230,46 @@ html.is-fs.idle, html.is-fs.idle * { cursor: none !important; }
     </div>
   </section>
 
-  <!-- 3b. edit_file in action (walkthrough: 3 steps) -->
+  <!-- 3. How a coding agent works: read, edit, run (walkthrough: 5 steps) -->
   <section class="slide">
     <div class="kicker">Coding agents</div>
-    <h2><code class="i" style="font-size:.8em">edit_file</code> in <b>action</b></h2>
+    <h2>How a coding agent <b>works</b></h2>
     <div style="position:relative;width:1640px">
-      <div style="display:flex;align-items:stretch;gap:34px;height:236px">
-        <div class="step" data-step="1" style="flex:0 0 560px;display:flex;align-items:center">
-          <span class="chip steel" style="font-size:32px;white-space:nowrap">You: stop after 3 tool calls, not 5</span>
-        </div>
-        <div class="step" data-step="2" style="flex:1;display:flex;align-items:center;gap:26px">
-          <span style="font-family:var(--serif);font-size:64px;color:var(--amber)">→</span>
-          <div class="card amber" style="padding:16px 26px;flex:1;align-self:center">
-            <span class="chip amber" style="font-size:26px;margin-bottom:10px">edit_file</span>
-            <div style="font-family:var(--mono);font-size:24px;line-height:1.5;color:var(--ink)">path: "main.py"<br>old: "MAX_TOOL_CALLS = 5"<br>new: "MAX_TOOL_CALLS = 3"</div>
-          </div>
-        </div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:6px">
-        <div class="step" data-step="1">
-          <p class="small" style="margin:0 0 10px;font-family:var(--mono);font-size:26px">main.py · before</p>
-          <div class="code" style="font-size:22px;line-height:1.55;padding:22px 26px">import json
+      <div class="step" data-step="1" style="margin:0 0 24px"><span class="chip steel" style="font-size:32px;white-space:nowrap">You: stop after 3 tool calls, not 5</span></div>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr) 56px minmax(0,1fr);align-items:start">
+        <div class="step" data-step="2">
+          <span class="chip navy" style="font-size:28px">read_file</span>
+          <div class="small" style="font-family:var(--mono);font-size:22px;margin:10px 0 12px">path: "main.py"</div>
+          <div class="code" style="font-size:21px;line-height:1.55;padding:18px 22px;min-height:270px"><span class="c"># main.py</span>
+import json
 
 from ai import call_gpt
 
 INDENT = "    "
-<span class="hlline" data-step="2">MAX_TOOL_CALLS = 5</span>
-PERSONALITY = "You are a friendly to-do list assistant."</div>
+<span class="hlline in">MAX_TOOL_CALLS = 5</span></div>
         </div>
+        <div class="step" data-step="3" style="text-align:center;font-family:var(--serif);font-size:56px;line-height:1;color:var(--amber);padding-top:150px">→</div>
         <div class="step" data-step="3">
-          <p class="small" style="margin:0 0 10px;font-family:var(--mono);font-size:26px">main.py · after</p>
-          <div class="code" style="font-size:22px;line-height:1.55;padding:22px 26px">import json
-
-from ai import call_gpt
-
-INDENT = "    "
-<span class="hlline in">MAX_TOOL_CALLS = 3</span>
-PERSONALITY = "You are a friendly to-do list assistant."</div>
+          <span class="chip navy" style="font-size:28px">edit_file</span>
+          <div class="small" style="font-family:var(--mono);font-size:22px;margin:10px 0 12px">path: "main.py"</div>
+          <div class="code" style="font-size:21px;line-height:1.55;padding:18px 22px;min-height:270px"><span class="c"># main.py</span>
+<span style="opacity:.55;text-decoration:line-through">MAX_TOOL_CALLS = 5</span>
+<span class="hlline in">MAX_TOOL_CALLS = 3</span></div>
+        </div>
+        <div class="step" data-step="4" style="text-align:center;font-family:var(--serif);font-size:56px;line-height:1;color:var(--amber);padding-top:150px">→</div>
+        <div class="step" data-step="4">
+          <span class="chip navy" style="font-size:28px">run_command</span>
+          <div class="small" style="font-family:var(--mono);font-size:22px;margin:10px 0 12px">command: "python main.py"</div>
+          <div class="term" style="font-size:20px;line-height:1.55;padding:18px 22px;min-height:270px"><span class="p">$ python main.py</span>
+Chat with the agent! (Enter to quit)
+You: </div>
         </div>
       </div>
-      <p class="step swap" data-step="1" data-out="2" style="position:absolute;left:0;top:610px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">You ask for a change.</p>
-      <p class="step swap" data-step="2" data-out="3" style="position:absolute;left:0;top:610px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">The model asks for the <code class="i" style="font-size:.85em">edit_file</code> tool.</p>
-      <p class="step" data-step="3" style="position:absolute;left:0;top:610px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">The <code class="i" style="font-size:.85em">edit_file</code> tool makes the change.</p>
+      <p class="step swap" data-step="1" data-out="2" style="position:absolute;left:0;top:560px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px;line-height:1.25">You ask for a change.</p>
+      <p class="step swap" data-step="2" data-out="3" style="position:absolute;left:0;top:560px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px;line-height:1.25">It reads the file.</p>
+      <p class="step swap" data-step="3" data-out="4" style="position:absolute;left:0;top:560px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px;line-height:1.25">It edits the file.</p>
+      <p class="step swap" data-step="4" data-out="5" style="position:absolute;left:0;top:560px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px;line-height:1.25">It runs the program.</p>
+      <p class="step swap" data-step="5" style="position:absolute;left:0;top:560px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px;line-height:1.25">Each step is a tool call. Same loop.</p>
     </div>
   </section>
 

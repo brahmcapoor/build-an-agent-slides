@@ -251,6 +251,51 @@ html.is-fs.idle, html.is-fs.idle * { cursor: none !important; }
     </div>
   </section>
 
+  <!-- 3b. edit_file in action (walkthrough: 3 steps) -->
+  <section class="slide">
+    <div class="kicker">Coding agents</div>
+    <h2><code class="i" style="font-size:.8em">edit_file</code> in <b>action</b></h2>
+    <div style="position:relative;width:1640px">
+      <div style="display:flex;align-items:stretch;gap:34px;height:236px">
+        <div class="step" data-step="1" style="flex:0 0 560px;display:flex;align-items:center">
+          <span class="chip steel" style="font-size:32px;white-space:nowrap">You: stop after 3 tool calls, not 5</span>
+        </div>
+        <div class="step" data-step="2" style="flex:1;display:flex;align-items:center;gap:26px">
+          <span style="font-family:var(--serif);font-size:64px;color:var(--amber)">→</span>
+          <div class="card amber" style="padding:16px 26px;flex:1;align-self:center">
+            <span class="chip amber" style="font-size:26px;margin-bottom:10px">edit_file</span>
+            <div style="font-family:var(--mono);font-size:24px;line-height:1.5;color:var(--ink)">path: "main.py"<br>old: "MAX_TOOL_CALLS = 5"<br>new: "MAX_TOOL_CALLS = 3"</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:6px">
+        <div class="step" data-step="1">
+          <p class="small" style="margin:0 0 10px;font-family:var(--mono);font-size:26px">main.py · before</p>
+          <div class="code" style="font-size:22px;line-height:1.55;padding:22px 26px">import json
+
+from ai import call_gpt
+
+INDENT = "    "
+<span class="hlline" data-step="2">MAX_TOOL_CALLS = 5</span>
+PERSONALITY = "You are a friendly to-do list assistant."</div>
+        </div>
+        <div class="step" data-step="3">
+          <p class="small" style="margin:0 0 10px;font-family:var(--mono);font-size:26px">main.py · after</p>
+          <div class="code" style="font-size:22px;line-height:1.55;padding:22px 26px">import json
+
+from ai import call_gpt
+
+INDENT = "    "
+<span class="hlline in">MAX_TOOL_CALLS = 3</span>
+PERSONALITY = "You are a friendly to-do list assistant."</div>
+        </div>
+      </div>
+      <p class="step swap" data-step="1" data-out="2" style="position:absolute;left:0;top:610px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">You ask for a change.</p>
+      <p class="step swap" data-step="2" data-out="3" style="position:absolute;left:0;top:610px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">The model asks for the edit_file tool.</p>
+      <p class="step" data-step="3" style="position:absolute;left:0;top:610px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">The program changes the file.</p>
+    </div>
+  </section>
+
   <!-- 4. Coding agents exist (Claude Code is the demo; others work similarly; mostly paid, some free tiers; optional) -->
   <section class="slide">
     <div class="kicker">Coding agents</div>

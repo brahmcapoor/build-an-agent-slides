@@ -196,26 +196,22 @@ html.is-fs.idle, html.is-fs.idle * { cursor: none !important; }
     <img class="art" data-art="robot" alt="A friendly robot and a person doing yoga side by side" style="right:140px;top:270px;width:560px">
   </section>
 
-  <!-- 2. What's different in real agents -->
+  <!-- 2. What's different in real agents: one difference, side by side -->
   <section class="slide">
     <div class="kicker">Compared</div>
     <h2>What's different in <b>real agents</b></h2>
-    <div class="grid2" style="margin-top:10px">
-      <div class="card steel" style="padding:36px 42px">
-        <h3 style="font-size:50px;margin-bottom:26px">Yours</h3>
-        <div class="col" style="gap:22px">
-          <p style="color:var(--ink);font-size:36px">You write the tool list into your prompt</p>
-          <p style="color:var(--ink);font-size:36px">You pull the tool name out of the reply text</p>
-          <p style="color:var(--ink);font-size:36px">A few tools</p>
-        </div>
+    <div class="grid2" style="margin-top:10px;gap:36px">
+      <div class="card steel" style="padding:34px 40px">
+        <h3 style="font-size:50px;margin-bottom:22px">Yours</h3>
+        <div class="code" style="font-size:28px;line-height:1.55;padding:26px 30px">{"tool_name": "add_todo",
+ "tool_parameters": {"task": "milk"}}</div>
+        <p style="margin-top:22px;font-size:36px;color:var(--ink)">The reply is text. Your program reads it to find the tool.</p>
       </div>
-      <div class="card amber" style="padding:36px 42px">
-        <h3 style="font-size:50px;margin-bottom:26px">Real agents</h3>
-        <div class="col" style="gap:22px">
-          <p style="color:var(--ink);font-size:36px">You hand the AI service the tool list separately</p>
-          <p style="color:var(--ink);font-size:36px">The service gives you the tool name and its values already separated</p>
-          <p style="color:var(--ink);font-size:36px">Dozens of tools</p>
-        </div>
+      <div class="card amber" style="padding:34px 40px">
+        <h3 style="font-size:50px;margin-bottom:22px">Real agents</h3>
+        <div class="code" style="font-size:28px;line-height:1.55;padding:26px 30px">tool:   add_todo
+values: {"task": "milk"}</div>
+        <p style="margin-top:22px;font-size:36px;color:var(--ink)">The service hands you the tool and its values, already separated.</p>
       </div>
     </div>
   </section>
@@ -291,8 +287,8 @@ PERSONALITY = "You are a friendly to-do list assistant."</div>
         </div>
       </div>
       <p class="step swap" data-step="1" data-out="2" style="position:absolute;left:0;top:610px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">You ask for a change.</p>
-      <p class="step swap" data-step="2" data-out="3" style="position:absolute;left:0;top:610px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">The model asks for the edit_file tool.</p>
-      <p class="step" data-step="3" style="position:absolute;left:0;top:610px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">The program changes the file.</p>
+      <p class="step swap" data-step="2" data-out="3" style="position:absolute;left:0;top:610px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">The model asks for the <code class="i" style="font-size:.85em">edit_file</code> tool.</p>
+      <p class="step" data-step="3" style="position:absolute;left:0;top:610px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">The <code class="i" style="font-size:.85em">edit_file</code> tool makes the change.</p>
     </div>
   </section>
 

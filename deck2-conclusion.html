@@ -196,41 +196,23 @@ html.is-fs.idle, html.is-fs.idle * { cursor: none !important; }
     <img class="art" data-art="robot" alt="A friendly robot and a person doing yoga side by side" style="right:140px;top:270px;width:560px">
   </section>
 
-  <!-- 2. What's different in real agents: one difference, side by side -->
-  <section class="slide">
-    <div class="kicker">Compared</div>
-    <h2>What's different in <b>real agents</b></h2>
-    <div class="grid2" style="margin-top:10px;gap:36px">
-      <div class="card steel" style="padding:34px 40px">
-        <h3 style="font-size:50px;margin-bottom:22px">Yours</h3>
-        <div class="code" style="font-size:28px;line-height:1.55;padding:26px 30px">{"tool_name": "add_todo",
- "tool_parameters": {"task": "milk"}}</div>
-        <p style="margin-top:22px;font-size:36px;color:var(--ink)">The reply is text. Your program reads it to find the tool.</p>
-      </div>
-      <div class="card amber" style="padding:34px 40px">
-        <h3 style="font-size:50px;margin-bottom:22px">Real agents</h3>
-        <div class="code" style="font-size:28px;line-height:1.55;padding:26px 30px">tool:   add_todo
-values: {"task": "milk"}</div>
-        <p style="margin-top:22px;font-size:36px;color:var(--ink)">The service hands you the tool and its values, already separated.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. A coding agent is the same loop (walkthrough: 3 steps) -->
+  <!-- 2. What if it had different tools? (walkthrough: 4 steps) -->
   <section class="slide">
     <div class="kicker">Coding agents</div>
-    <h2>A coding agent is the same <b>loop</b></h2>
+    <h2>What if it had different <b>tools</b>?</h2>
     <div style="position:relative;width:1640px">
       <svg viewBox="0 0 1640 380" width="1640" height="380" style="margin-top:6px">
         <g class="node"><rect x="0" y="20" width="240" height="330" rx="26" style="stroke:var(--steel)"/><text class="t" x="120" y="195" style="fill:var(--steel-ink)">You</text></g>
-        <g class="node"><rect x="500" y="20" width="460" height="330" rx="26" style="stroke:var(--navy)"/><text class="t" x="730" y="74" style="fill:var(--navy)">Your program</text></g>
+        <g class="node"><rect x="500" y="20" width="460" height="330" rx="26" style="stroke:var(--navy)"/>
+          <text class="t swap" data-out="4" x="730" y="74" style="fill:var(--navy);transform:none">Your program</text>
+          <text class="t fade" data-step="4" x="730" y="74" style="fill:var(--navy)">A coding agent</text>
+        </g>
         <g class="node"><rect x="1340" y="20" width="300" height="330" rx="26" style="stroke:var(--amber)"/><text class="t" x="1490" y="195" style="fill:var(--amber-ink)">The model</text></g>
         <g class="arrow step" data-keep="1" data-step="1" data-x1="250" data-y1="120" data-x2="488" data-y2="120" data-color="#4f6f9b" data-label="request"></g>
         <g class="arrow step" data-keep="1" data-step="1" data-x1="970" data-y1="75" data-x2="1330" data-y2="75" data-color="#1d4a7c" data-label="prompt"></g>
         <g class="arrow step" data-keep="1" data-step="1" data-x1="1330" data-y1="125" data-x2="970" data-y2="125" data-color="#b8691a" data-label="asks for a tool"></g>
         <g class="arrow step" data-keep="1" data-step="1" data-x1="488" data-y1="230" data-x2="250" data-y2="230" data-color="#1d4a7c" data-label="result"></g>
       </svg>
-      <!-- the program's tools: to-do tools, then coding tools -->
       <div class="step swap" data-step="1" data-out="2" style="position:absolute;left:560px;top:104px;width:340px;display:flex;flex-direction:column;gap:14px;align-items:stretch">
         <span class="chip navy" style="text-align:center">add_todo</span>
         <span class="chip navy" style="text-align:center">list_todos</span>
@@ -241,9 +223,10 @@ values: {"task": "milk"}</div>
         <span class="chip amber" style="text-align:center;border-color:var(--navy);color:var(--navy)">edit_file</span>
         <span class="chip amber" style="text-align:center;border-color:var(--navy);color:var(--navy)">run_command</span>
       </div>
-      <p class="step swap" data-step="1" data-out="2" style="position:absolute;left:0;top:405px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">Your agent: tools for a to-do list.</p>
-      <p class="step swap" data-step="2" data-out="3" style="position:absolute;left:0;top:405px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">A coding agent: tools for reading, changing and running your code.</p>
-      <p class="step" data-step="3" style="position:absolute;left:0;top:405px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">The loop is the same.</p>
+      <p class="step swap" data-step="1" data-out="2" style="position:absolute;left:0;top:405px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px;line-height:1.25">Your agent has tools for a to-do list.</p>
+      <p class="step swap" data-step="2" data-out="3" style="position:absolute;left:0;top:405px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px;line-height:1.25">What if its tools could read files, edit files and run commands?</p>
+      <p class="step swap" data-step="3" data-out="4" style="position:absolute;left:0;top:405px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px;line-height:1.25">Then it can read your code, write code, and run it.</p>
+      <p class="step" data-step="4" style="position:absolute;left:0;top:405px;width:1640px;text-align:center;font-family:var(--serif);font-size:56px;line-height:1.25">That's a <b style="font-style:italic;color:var(--navy)">coding agent</b>.</p>
     </div>
   </section>
 
@@ -290,6 +273,20 @@ PERSONALITY = "You are a friendly to-do list assistant."</div>
       <p class="step swap" data-step="2" data-out="3" style="position:absolute;left:0;top:610px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">The model asks for the <code class="i" style="font-size:.85em">edit_file</code> tool.</p>
       <p class="step" data-step="3" style="position:absolute;left:0;top:610px;width:1640px;text-align:center;font-family:var(--serif);font-size:48px">The <code class="i" style="font-size:.85em">edit_file</code> tool makes the change.</p>
     </div>
+  </section>
+
+  <!-- 3c. How programming has changed (walkthrough: 6 steps) -->
+  <section class="slide">
+    <div class="kicker">Coding agents</div>
+    <h2>How programming has <b>changed</b></h2>
+    <div class="col" style="gap:24px;margin-top:6px">
+      <div class="step left" data-step="1" style="display:flex;gap:30px;align-items:center"><span class="num">1</span><p>You write every line yourself</p></div>
+      <div class="step left" data-step="2" style="display:flex;gap:30px;align-items:center"><span class="num">2</span><p>You search for answers and copy what works</p></div>
+      <div class="step left" data-step="3" style="display:flex;gap:30px;align-items:center"><span class="num">3</span><p>Your editor suggests the next line</p></div>
+      <div class="step left" data-step="4" style="display:flex;gap:30px;align-items:center"><span class="num">4</span><p>You ask an AI chat for code and paste it in</p></div>
+      <div class="step left" data-step="5" style="display:flex;gap:30px;align-items:center"><span class="num amber">5</span><p><b>A coding agent reads, edits and runs your code</b></p></div>
+    </div>
+    <p class="step" data-step="6" style="margin-top:40px;font-family:var(--serif);font-size:48px">A lot of programming is done this way now.</p>
   </section>
 
   <!-- 4. Coding agents exist (Claude Code is the demo; others work similarly; mostly paid, some free tiers; optional) -->
